@@ -6,15 +6,15 @@ import random
 
 tiempo= 0.0001
 desplasamiento=4 
-width=750
-height=750
+width=500
+height=500
 puntuacion=0
 maximapuntuacion=0
 
 # Configuracion de la ventana
 win =turtle.Screen()
 win.title("Snake 3D?")
-win.bgcolor("black")
+win.bgcolor("grey")
 win.setup(width,height)
 win.tracer(0)
 alto=int(width/2)
@@ -34,9 +34,9 @@ cabeza= turtle.Turtle()
 cabeza.speed(0)
 cabeza.shape("square")
 cabeza.penup()
-cabeza.goto(0,0)
+cabeza.goto(50,50)
 cabeza.direction="stop"
-cabeza.color("dark green")
+cabeza.color("green")
 
 #cuerpo de la serpiente
 
@@ -118,7 +118,7 @@ while start:
         nuevo_segmento.speed(0)
         nuevo_segmento.shape("square")  
         nuevo_segmento.penup()
-        nuevo_segmento.goto(0,0)
+        nuevo_segmento.goto(cabeza.xcor(),cabeza.ycor())
         nuevo_segmento.direction="None"
         nuevo_segmento.color("green")
         cuerpo.append(nuevo_segmento)
@@ -131,9 +131,10 @@ while start:
     if cabeza.xcor() >ancho or cabeza.xcor()<- ancho or cabeza.ycor()>alto or cabeza.ycor()< -alto:
         cabeza.direction="None"
         puntuacion=0
-        cabeza.goto(0,0)
-        while len(cuerpo)!=0:   
-            cuerpo.pop()
+        cabeza.goto(50,50)
+        cantidad=len(cuerpo)
+        while len(cuerpo)!=0:  
+            cuerpo.pop().reset()
         marcador.clear()
         marcador.write("Puntuacion: {} Maxima Puntuacion: {}".format(puntuacion,maximapuntuacion),align="center",font=("Courier"))
        
