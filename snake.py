@@ -4,8 +4,8 @@ import time
 import keyword
 import random
 
-tiempo= 0.0001
-desplasamiento=4 
+tiempo= 0.01
+desplazamiento=4 
 width=500
 height=500
 puntuacion=0
@@ -14,7 +14,7 @@ maximapuntuacion=0
 # Configuracion de la ventana
 win =turtle.Screen()
 win.title("Snake 3D?")
-win.bgcolor("grey")
+win.bgcolor("black")
 win.setup(width,height)
 win.tracer(0)
 alto=int(width/2)
@@ -55,16 +55,16 @@ def mov():
     
     if cabeza.direction == "up":
         y = cabeza.ycor()
-        cabeza.sety(y+desplasamiento)
+        cabeza.sety(y+desplazamiento)
     if cabeza.direction == "down":
         y = cabeza.ycor()
-        cabeza.sety(y-desplasamiento)
+        cabeza.sety(y-desplazamiento)
     if cabeza.direction == "left":
         x = cabeza.xcor()
-        cabeza.setx(x-desplasamiento)
+        cabeza.setx(x-desplazamiento)
     if cabeza.direction == "right":
         x = cabeza.xcor()
-        cabeza.setx(x+desplasamiento)
+        cabeza.setx(x+desplazamiento)
 
 def arriba():
     if cabeza.direction != "down":
@@ -107,6 +107,7 @@ win.onkeypress(der,"Right")
 
 start=True
 while start:
+    time.sleep(tiempo)
     win.update()
     movCuerpo()
     mov()
@@ -139,4 +140,4 @@ while start:
         marcador.write("Puntuacion: {} Maxima Puntuacion: {}".format(puntuacion,maximapuntuacion),align="center",font=("Courier"))
        
 
-    time.sleep(tiempo)
+    
